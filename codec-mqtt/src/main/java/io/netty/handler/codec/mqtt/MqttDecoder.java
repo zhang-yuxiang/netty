@@ -130,6 +130,7 @@ public final class MqttDecoder extends ReplayingDecoder<DecoderState> {
             case BAD_MESSAGE:
                 // Keep discarding until disconnection.
                 buffer.skipBytes(actualReadableBytes());
+                state(DecoderState.READ_FIXED_HEADER);
                 break;
 
             default:
